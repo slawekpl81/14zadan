@@ -19,7 +19,7 @@ def compareId(fileNames):
         tracks = plist['Tracks']
         for trackId, track in tracks.items():
             try:
-                allTracks.append((trackId, track['Name'], track['Album']))
+                allTracks.append((trackId, track['Name']))
             except:
                 pass
 
@@ -99,7 +99,7 @@ def ploStats(fileName):
 
 def findDuplicates(fileName):
     print(f'wyszukiwanie zduplik utw w {fileName}')
-    plist = plistlib.readPlist(fileName)
+    plist = readPlist(fileName)
     tracks = plist['Tracks']
     trackNames = {}
     for trackId, track in tracks.items():
@@ -128,13 +128,6 @@ def findDuplicates(fileName):
     f.close()
 
 
-def test(fileName):
-    plist = plistlib.readPlist(fileName)
-    tracks = plist['Tracks']
-
-    print(list(tracks))
-    for key in list(tracks)[0]:
-        print(key)
 
 if __name__ == '__main__':
     # fileName = 'maya.xml'
@@ -160,4 +153,4 @@ if __name__ == '__main__':
     elif args.plFilesC:
         compareId(args.plFilesC)
     else:
-        print('nie działa')
+        print('not working')
